@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+
+  &Item {
+
+  }
+
+  &ItemActive {
+    font-weight: 700;
+    border-bottom: #1919d7;
+  }
+}

@@ -1,10 +1,12 @@
 import React from 'react';
-import './App.scss';
+import Header from './widgets/Header/Header';
 
 function App() {
   return (
     <div>
-      AppAppAppAppApp
+      <Header />
+
+
     </div>
   );
 }
