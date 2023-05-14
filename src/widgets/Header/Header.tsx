@@ -1,6 +1,8 @@
 import React, {useMemo, useState} from 'react';
 import Logo from '../../shared/Logo/Logo';
 import styles from './header.module.scss';
+import classNames from 'classnames'
+import {Link} from 'react-router-dom';
 
 const Header = () => {
 
@@ -22,19 +24,21 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Logo />
+      <Logo/>
       <h1 className={styles.title}>Рынок валюты</h1>
       <nav className={styles.nav}>
-        <div className={tab === tabs.tab1 ? styles.navItemActive : styles.navItem}
-             onClick={() => handleTabClick(tabs.tab1)}
+        <Link to='/'
+              className={classNames(styles.navItem, tab === tabs.tab1 ? styles.navItemActive : '')}
+              onClick={() => handleTabClick(tabs.tab1)}
         >
           Курсы валют
-        </div>
-        <div className={tab === tabs.tab2 ? styles.navItemActive : styles.navItem}
-             onClick={() => handleTabClick(tabs.tab2)}
+        </Link>
+        <Link to='/converter'
+              className={classNames(styles.navItem, tab === tabs.tab2 ? styles.navItemActive : '')}
+              onClick={() => handleTabClick(tabs.tab2)}
         >
           Конвертер
-        </div>
+        </Link>
       </nav>
     </header>
   );

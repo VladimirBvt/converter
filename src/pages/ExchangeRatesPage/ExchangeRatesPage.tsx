@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import CurrenciesList from '../../widgets/CurrenciesList/CurrenciesList';
 
-const ExchangeRatesPage = () => {
+const ExchangeRatesPage: FC = () => {
   return (
     <div>
       <h2>Курсы валют</h2>

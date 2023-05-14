@@ -11,11 +11,13 @@
   display: flex;
 
   &Item {
-
+    height: fit-content;
+    cursor: pointer;
+    padding: 5px;
   }
 
   &ItemActive {
     font-weight: 700;
-    border-bottom: #1919d7;
+    border-bottom: 1.5px solid #8dafd6;
   }
 }
