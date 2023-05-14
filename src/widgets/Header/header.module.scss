@@ -1,5 +1,15 @@
 .header {
   display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 80px;
+  border-bottom: 1px solid #ddd;
+
+  &Wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 }
 
 .title {
@@ -9,11 +19,13 @@
 
 .nav {
   display: flex;
+  gap: 15px;
+  margin-left: 20px;
 
   &Item {
     height: fit-content;
     cursor: pointer;
-    padding: 5px;
+    padding: 1px 5px;
   }
 
   &ItemActive {

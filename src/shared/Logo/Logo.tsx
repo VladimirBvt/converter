@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from './logo.module.scss'
+import {Link} from 'react-router-dom';
 
-const Logo = () => {
+const Logo: FC = () => {
   return (
-    <div className={styles.logo}>
+    <Link to='/' className={styles.logo}>
       <img className={styles.logoImg} src="/assets/converter-icon.png" alt="logo converter" />
-    </div>
+    </Link>
   );
 };
 

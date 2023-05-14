@@ -9,17 +9,19 @@ import styles from './styles/App.module.scss'
 const App: FC = () => {
   return (
     <BrowserRouter>
-      <div className={styles.app}>
+      <div>
         <Header />
 
-        <Switch>
-          <Route path='/' component={ExchangeRatesPage} exact />
-          <Route path='/converter' component={ConverterPage} />
-          <Route path='*' component={NotFoundPage} />
-        </Switch>
+        <main className={styles.main}>
+          <Switch>
+            <Route path='/' component={ExchangeRatesPage} exact />
+            <Route path='/converter' component={ConverterPage} />
+            <Route path='*' component={NotFoundPage} />
+          </Switch>
+        </main>
+
       </div>
     </BrowserRouter>
-
   );
 }
 
