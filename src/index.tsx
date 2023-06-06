@@ -4,6 +4,7 @@ import './scss/index.scss';
 import App from './app/App';
 import {Provider} from 'react-redux';
 import {setupStore} from './store/store';
+// require('dotenv').config()
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

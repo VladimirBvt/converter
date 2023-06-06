@@ -1,8 +1,10 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import currencyReducer from './reducers/CurrencySlice'
+import converterReducer from './reducers/ConverterSlice'
 
 const rootReducer = combineReducers({
-  currencyReducer
+  currencyReducer,
+  converterReducer
 })
 
 export const setupStore = () => {

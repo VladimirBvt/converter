@@ -11,7 +11,7 @@ const Header: FC = () => {
 
         <Logo />
 
-        <h1 className={styles.title}>Рынок валюты</h1>
+        <h1 className={styles.title}>Рынок валют</h1>
         <nav className={styles.nav}>
 
           <NavLink to='/' exact
