@@ -1,0 +1,19 @@
+@use "../../scss/settings/vars" as *;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 180px;
+  padding: 10px;
+  background: #f6d6ab;
+  border-radius: 10px;
+
+  .value {
+    font-weight: 600;
+    letter-spacing: 1.1px;
+  }
+
+  .description {
+    color: $color_font_grey;
+  }
+}

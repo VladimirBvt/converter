@@ -9,6 +9,7 @@ import {
 } from '../../store/reducers/ActionCreators';
 import BasisCurrencySelect from '../../widgets/BasisCurrencySelect/BasisCurrencySelect';
 import styles from './exchangeRatesPage.module.scss'
+import ExchangeRatesUpdateButton from '../../widgets/ExchangeRatesUpdateButton/ExchangeRatesUpdateButton';
 
 const ExchangeRatesPage: FC = () => {
 
@@ -22,26 +23,35 @@ const ExchangeRatesPage: FC = () => {
   const {setBasisCurrency} = currencySlice.actions
   const dispatch = useAppDispatch()
 
+  // const updateCurrencyRates = dispatch(fetchCurrenciesRates(basisCurrency))
+
   useEffect(() => {
     dispatch(fetchCurrenciesRates(basisCurrency))
     dispatch(fetchCurrenciesDescription())
     dispatch(fetchAllCurrencyRates(basisCurrency))
+
   }, [dispatch, basisCurrency])
 
   return (
     <div>
-      {/*<h2>Курсы валют</h2>*/}
-
       {error && <h2>{error}</h2>}
-      {isLoading && <h2>Идет загрузка...</h2>}
 
-      <div className={styles.basisCurrency}>
-        <h2 className={styles.title}>Базовая валюта</h2>
+      <div className={styles.main}>
+        <div className={styles.basisRate}>
+          <h2 className={styles.title}>Базовая валюта</h2>
 
-        <BasisCurrencySelect />
+          <BasisCurrencySelect />
 
-        <div className={styles.basisDescription}>{currencyDescriptions && currencyDescriptions[basisCurrency]}</div>
+          {currencyDescriptions && <div className={styles.basisDescription}>({currencyDescriptions[basisCurrency]})</div>}
+        </div>
+
+        <div>
+          <ExchangeRatesUpdateButton />
+        </div>
+
       </div>
+
+      {isLoading && <h2>Идет загрузка...</h2>}
 
       <CurrenciesRates data={currenciesRates}/>
     </div>
