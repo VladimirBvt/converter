@@ -1,0 +1,47 @@
+.title {
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  margin-bottom: 8px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #b4cbe1;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.reverseButton {
+  width: 20px;
+  cursor: pointer;
+}
+
+.submitButton {
+  border: 2px solid #6179ab;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.result {
+  width: fit-content;
+  margin: 10px 0 0 0;
+  background: #f6d6ab;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.output {
+  display: block;
+  height: 20px;
+  width: fit-content;
+  min-width: 100px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 5px 0 0 0;
+  padding-left: 3px;
+  background: #fff;
+}
