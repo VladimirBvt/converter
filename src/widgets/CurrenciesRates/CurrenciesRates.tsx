@@ -25,12 +25,6 @@ const CurrenciesRates = ({ data }: ICurrencyRatesProps) => {
 
             return (
               currencyDescriptions && <CurrenciesRate key={index} currencyDescription={currencyDescriptions[rate]} basisCurrency={item[0].substring(0, 3)} rate={rate} exchangeRateValue={item[1]} />
-              // <div key={index}>
-              //   {
-              //     currencyDescriptions && <div>{currencyDescriptions[rate]}</div>
-              //   }
-              //   <div>1 {rate} = {getRateValue(item[1])} {item[0].substring(0, 3)}</div>
-              // </div>
               )
           })
         }

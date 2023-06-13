@@ -23,8 +23,6 @@ const ExchangeRatesPage: FC = () => {
   const {setBasisCurrency} = currencySlice.actions
   const dispatch = useAppDispatch()
 
-  // const updateCurrencyRates = dispatch(fetchCurrenciesRates(basisCurrency))
-
   useEffect(() => {
     dispatch(fetchCurrenciesRates(basisCurrency))
     dispatch(fetchCurrenciesDescription())

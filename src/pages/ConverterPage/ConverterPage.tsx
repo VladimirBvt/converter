@@ -3,26 +3,24 @@ import {useAppDispatch, useAppSelector} from '../../hooks/redux';
 import {fetchConverterCurrency} from '../../store/reducers/ActionCreators';
 import {converterSlice} from '../../store/reducers/ConverterSlice';
 import styles from './converterPage.module.scss'
+import ReverseImage from '../../assets/revers.png'
 
 const ConverterPage = () => {
 
   const {basisCurrencies} = useAppSelector(state => state.currencyReducer)
-  const {amount, from, to, result} = useAppSelector(state => state.converterReducer)
+  const {amount, from, to, result, isLoading} = useAppSelector(state => state.converterReducer)
   const {setFromCurrency, setToCurrency, setAmount} = converterSlice.actions
   const dispatch = useAppDispatch()
 
-  // const [amountValue, setAmountValue] = useState('')
-  // const [fromCurrency, setFromCurrency] = useState('')
-  // const [toCurrency, setToCurrency] = useState('')
-
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setAmountValue(e.target.value)
     dispatch(setAmount(e.target.value))
   }
 
   const handleButtonSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    dispatch(fetchConverterCurrency({amount, from, to}))
+    if (Number(amount) > 0) {
+      dispatch(fetchConverterCurrency({amount, from, to}))
+    }
   }
 
   const handleFromSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -33,31 +31,45 @@ const ConverterPage = () => {
     dispatch(setToCurrency(e.target.value))
   }
 
+  const handleReverseCurrencies = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    dispatch(setFromCurrency(to))
+    dispatch(setToCurrency(from))
+  }
+
   return (
     <div>
-      <h1>ConverterPage</h1>
+      <h1 className={styles.title}>Онлайн конвертер</h1>
 
-      <form>
-        Из
-        <select onChange={handleFromSelect}>
+      <form className={styles.form}>
+        <span>Из</span>
+        <select onChange={handleFromSelect} value={from}>
           {basisCurrencies.map((optionItem, index) => {
             return <option key={index}>{optionItem}</option>
           })}
         </select>
-        в
-        <select defaultValue='USD' onChange={handleToSelect}>
+        <button className={styles.reverseButton} onClick={handleReverseCurrencies}>
+          <img src={ReverseImage} alt="reverse" />
+        </button>
+        <span>в</span>
+        <select onChange={handleToSelect} value={to}>
           {basisCurrencies.map((optionItem, index) => {
             return <option key={index}>{optionItem}</option>
           })}
         </select>
 
         <label htmlFor="from">Сумма</label>
-        <input type="number" id="from" min={0} onChange={handleValueChange} value={amount} />
+        <input type="number" id="from" min={1} onChange={handleValueChange} value={amount} />
 
-        <button onClick={handleButtonSubmit}>Отправить</button>
+        <button className={styles.submitButton} onClick={handleButtonSubmit}>Отправить</button>
       </form>
 
-      <output className={styles.output}>{result && result.toFixed(2)}</output>
+      <div className={styles.result}>
+        <span>Результат</span>
+        <output className={styles.output}>
+          {isLoading ? <div>Загрузка...</div> : result && result.toFixed(2)}
+        </output>
+      </div>
     </div>
   );
 };
